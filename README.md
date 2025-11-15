@@ -22,5 +22,5 @@ The main functionalities of the system are represented in the following use case
 - GO installed on the system 
 
 ### 3.2 CLI commands
-- go run . for running the application
-- go run . add https://google.com to add a new website
+- *go run main.go* for running the application and verify all the websites
+- *go run main.go add https://google.com* to add a new website

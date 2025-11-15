@@ -1,5 +1,18 @@
 [
   {
-    "url": "https://google.com"
+    "url": "https://google.com",
+    "last_hash": "54c7c672a2e6993b52c450a0a2e40abfeb80bcdde290a14347b5d377a1431faf"
+  },
+  {
+    "url": "https://facebook.com",
+    "last_hash": "3a60706c8330086ab39011870d4bb8e28e5298a4fbaeaf8003cf513bdef612be"
+  },
+  {
+    "url": "https://instagram.com",
+    "last_hash": "c62a0de51d0549d31695774151fd73228c429e507c7060e3a6517e1758bbcba9"
+  },
+  {
+    "url": "https://example.com",
+    "last_hash": "6f5635035f36ad500b4fc4bb7816bb72ef5594e1bcae44fa074c5e988fc4c0fe"
   }
 ]

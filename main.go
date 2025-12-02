@@ -44,14 +44,6 @@ func main() {
 		}
 		if len(changed) == 0 {
 			fmt.Println("No changes detected.")
-		} else {
-			fmt.Println("Changes detected in:")
-			for _, item := range changed {
-				fmt.Println("-", item.URL)
-				if len(item.History) > 0 {
-					fmt.Println(item.History[len(item.History)-1].Diff)
-				}
-			}
 		}
 
 	case "list":

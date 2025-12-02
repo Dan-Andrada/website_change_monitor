@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"strconv"
 	"website_change_monitor/internal/monitor"
 )
 
@@ -14,17 +15,26 @@ func Execute() {
 
 	switch os.Args[1] {
 	case "add":
-		if len(os.Args) < 3 {
-			fmt.Println("Usage: monitor add <url>")
+		if len(os.Args) < 5 {
+			fmt.Println("Usage: monitor add <url> <selector> <frequency>")
 			return
 		}
+
 		url := os.Args[2]
-		err := monitor.AddURL(url)
+		selector := os.Args[3]
+		frequency, err := strconv.Atoi(os.Args[4])
+		if err != nil {
+			fmt.Println("Frequency must be a number")
+			return
+		}
+
+		err = monitor.AddURL(url, selector, frequency)
 		if err != nil {
 			fmt.Println("Error:", err)
 			return
 		}
 		fmt.Println("URL added:", url)
+
 	case "check":
 		items, err := monitor.LoadMonitors()
 		if err != nil {

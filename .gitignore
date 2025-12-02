@@ -1,0 +1,23 @@
+# Fișiere binare / executabile
+*.exe
+*.exe~
+*.out
+*.dll
+*.so
+*.dylib
+
+# Fișiere temporare Go
+*.tmp
+*.log
+
+# Monitors JSON (creat automat)
+data/monitors.json
+
+# Fișiere generate de editor / OS
+.vscode/
+*.swp
+*.DS_Store
+Thumbs.db
+
+# OneDrive / temp
+~$*

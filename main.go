@@ -3,34 +3,69 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 	"website_change_monitor/internal/monitor"
 )
 
 func main() {
+	if len(os.Args) < 2 {
+		fmt.Println("Usage: monitorapp <command> [args]")
+		fmt.Println("Commands: add <URL> <selector> <frequency>, check, list")
+		return
+	}
 
-	if len(os.Args) > 1 && os.Args[1] == "add" && len(os.Args) > 2 {
+	cmd := os.Args[1]
+
+	switch cmd {
+	case "add":
+		if len(os.Args) < 5 {
+			fmt.Println("Usage: add <URL> <selector> <frequency>")
+			return
+		}
 		url := os.Args[2]
-		err := monitor.AddURL(url)
+		selector := os.Args[3]
+		freq, err := strconv.Atoi(os.Args[4])
 		if err != nil {
-			fmt.Println("Eroare la adăugarea URL:", err)
+			fmt.Println("Frequency must be a number")
+			return
+		}
+		err = monitor.AddURL(url, selector, freq)
+		if err != nil {
+			fmt.Println("Error:", err)
+			return
+		}
+		fmt.Println("URL added successfully!")
+
+	case "check":
+		changed, err := monitor.CheckAll()
+		if err != nil {
+			fmt.Println("Error:", err)
+			return
+		}
+		if len(changed) == 0 {
+			fmt.Println("No changes detected.")
 		} else {
-			fmt.Println("URL adăugat cu succes:", url)
+			fmt.Println("Changes detected in:")
+			for _, item := range changed {
+				fmt.Println("-", item.URL)
+				if len(item.History) > 0 {
+					fmt.Println(item.History[len(item.History)-1].Diff)
+				}
+			}
 		}
-		return
-	}
 
-	changed, err := monitor.CheckAll()
-	if err != nil {
-		fmt.Println("Eroare la verificarea site-urilor:", err)
-		return
-	}
-
-	if len(changed) == 0 {
-		fmt.Println("Nu s-au detectat schimbări.")
-	} else {
-		fmt.Println("Site-uri modificate:")
-		for _, item := range changed {
-			fmt.Println("-", item.URL)
+	case "list":
+		items, err := monitor.LoadMonitors()
+		if err != nil {
+			fmt.Println("Error:", err)
+			return
 		}
+		fmt.Println("Monitored URLs:")
+		for _, item := range items {
+			fmt.Printf("- %s (selector: %s, frequency: %d min)\n", item.URL, item.Selector, item.Frequency)
+		}
+
+	default:
+		fmt.Println("Unknown command:", cmd)
 	}
 }

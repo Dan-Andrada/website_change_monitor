@@ -8,18 +8,29 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strconv"
+	"strings"
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/sergi/go-diff/diffmatchpatch"
 )
 
+// ParsePrice transformă un string de tip "548,06 Lei" în float64
+func ParsePrice(s string) (float64, error) {
+	s = strings.ReplaceAll(s, "Lei", "")
+	s = strings.TrimSpace(s)
+	s = strings.ReplaceAll(s, ".", "") // elimină separatorul de mii
+	s = strings.ReplaceAll(s, ",", ".")
+	return strconv.ParseFloat(s, 64)
+}
+
 // ChangeRecord păstrează istoricul modificărilor
 type ChangeRecord struct {
 	Hash      string    `json:"hash"`
 	Timestamp time.Time `json:"timestamp"`
 	Diff      string    `json:"diff,omitempty"`
-	Text      string    `json:"text,omitempty"` // textul complet pentru diff
+	Text      string    `json:"text,omitempty"`
 }
 
 // MonitorItem reprezintă un site monitorizat
@@ -52,7 +63,6 @@ func SaveMonitors(items []MonitorItem) error {
 	if err != nil {
 		return err
 	}
-
 	return os.WriteFile("data/monitors.json", data, 0644)
 }
 
@@ -83,75 +93,72 @@ func HashContent(content []byte) string {
 	return fmt.Sprintf("%x", h)
 }
 
-// CheckURL verifică un URL și actualizează istoricul dacă s-a schimbat
-func CheckURL(item *MonitorItem) (bool, error) {
-	client := http.Client{
-		Timeout: 10 * time.Second,
-	}
-
+// CheckURL verifică un URL și returnează schimbarea, plus vechea și noua valoare
+func CheckURL(item *MonitorItem) (changed bool, oldValue, newValue string, err error) {
+	client := http.Client{Timeout: 10 * time.Second}
 	req, err := http.NewRequest("GET", item.URL, nil)
 	if err != nil {
-		return false, err
+		return false, "", "", err
 	}
-
 	req.Header.Set("User-Agent", "Go-Site-Monitor/1.0")
+
 	resp, err := client.Do(req)
 	if err != nil {
-		return false, err
+		return false, "", "", err
 	}
 	defer resp.Body.Close()
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return false, err
+		return false, "", "", err
 	}
 
-	// parsează HTML
 	doc, err := goquery.NewDocumentFromReader(bytes.NewReader(body))
 	if err != nil {
-		return false, err
+		return false, "", "", err
 	}
 
 	selectedText := doc.Find(item.Selector).Text()
+	selectedText = strings.TrimSpace(selectedText)
 	newHash := HashContent([]byte(selectedText))
 
+	// Prima rulare
 	if item.LastHash == "" {
 		item.LastHash = newHash
 		item.History = append(item.History, ChangeRecord{
 			Hash:      newHash,
 			Timestamp: time.Now(),
-			Diff:      "",
 			Text:      selectedText,
 		})
-		return false, nil
+		return false, "", selectedText, nil
 	}
 
+	// Dacă s-a schimbat
 	if newHash != item.LastHash {
-		// generează diff
-		dmp := diffmatchpatch.New()
 		oldText := ""
 		if len(item.History) > 0 {
 			oldText = item.History[len(item.History)-1].Text
 		}
+
+		dmp := diffmatchpatch.New()
 		diffs := dmp.DiffMain(oldText, selectedText, false)
 		diffText := dmp.DiffPrettyText(diffs)
 
-		// salvează în istoric
 		item.History = append(item.History, ChangeRecord{
 			Hash:      newHash,
 			Timestamp: time.Now(),
-			Diff:      diffText,
 			Text:      selectedText,
+			Diff:      diffText,
 		})
-
 		item.LastHash = newHash
-		return true, nil
+
+		return true, oldText, selectedText, nil
 	}
 
-	return false, nil
+	return false, "", selectedText, nil
 }
 
-// CheckAll verifică toate URL-urile și salvează hash-urile actualizate
+// CheckAll verifică toate URL-urile și afișează schimbările cu diferența de preț
 func CheckAll() ([]MonitorItem, error) {
 	items, err := LoadMonitors()
 	if err != nil {
@@ -161,13 +168,31 @@ func CheckAll() ([]MonitorItem, error) {
 	changed := []MonitorItem{}
 
 	for i := range items {
-		isChanged, err := CheckURL(&items[i])
+		changedNow, oldText, newText, err := CheckURL(&items[i])
 		if err != nil {
-			fmt.Println("Eroare la verificarea:", items[i].URL, err)
+			fmt.Println("Eroare la verificare:", items[i].URL, err)
 			continue
 		}
-		if isChanged {
+		if changedNow {
+			fmt.Println("🔴 CHANGED:", items[i].URL)
+			fmt.Println("Old value:", oldText)
+			fmt.Println("New value:", newText)
+
+			oldPrice, err1 := ParsePrice(oldText)
+			newPrice, err2 := ParsePrice(newText)
+			if err1 == nil && err2 == nil {
+				diff := newPrice - oldPrice
+				if diff > 0 {
+					fmt.Printf("Price increased by %.2f Lei\n", diff)
+				} else if diff < 0 {
+					fmt.Printf("Price decreased by %.2f Lei\n", -diff)
+				} else {
+					fmt.Println("Price unchanged")
+				}
+			}
 			changed = append(changed, items[i])
+		} else {
+			fmt.Println("🟢 NO CHANGE:", items[i].URL)
 		}
 	}
 

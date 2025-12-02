@@ -36,38 +36,33 @@
     ]
   },
   {
-    "url": "https://example.com",
-    "selector": "",
-    "frequency": 0,
-    "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "url": "https://www.emag.ro/telefon-mobil-samsung-galaxy-a16-dual-sim-128gb-4gb-ram-4g-black-sm-a165fzkbeue/pd/DVJ1YZYBM/",
+    "selector": "[data-test=main-price]",
+    "frequency": 60,
+    "last_hash": "255f5846f35c4fc50a5ee0386a5e1284fecba2337700b50fe871e64a98b0e859",
     "history": [
       {
-        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "timestamp": "2025-11-22T16:10:38.2846956+02:00"
-      }
-    ]
-  },
-  {
-    "url": "https://example.com",
-    "selector": "#price",
-    "frequency": 5,
-    "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "history": [
+        "hash": "156f1a291101b7af5ed0ab2543333edfae387e650d20593df1f1ca96afea066a",
+        "timestamp": "2025-12-02T17:01:59.6718742+02:00",
+        "text": "680,00 Lei"
+      },
       {
-        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "timestamp": "2025-11-22T16:10:38.4012438+02:00"
-      }
-    ]
-  },
-  {
-    "url": "https://www.emag.ro/produs-exemplu",
-    "selector": "p.product-new-price[data-test='main-price']",
-    "frequency": 5,
-    "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "history": [
+        "hash": "255f5846f35c4fc50a5ee0386a5e1284fecba2337700b50fe871e64a98b0e859",
+        "timestamp": "2025-12-02T17:04:18.7644241+02:00",
+        "diff": "5\u001b[32m4\u001b[0m8\u001b[31m0\u001b[0m,0\u001b[31m0\u001b[0m\u001b[32m6\u001b[0m Lei",
+        "text": "600,50 Lei"
+      },
       {
-        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "timestamp": "2025-11-22T16:10:38.7128518+02:00"
+        "hash": "48aebbb87d236e09f38f9108f84e61543474ae772f09831ae9318ee816066102",
+        "timestamp": "2025-12-02T17:14:28.9916835+02:00",
+        "diff": "\u001b[31m600,\u001b[0m5\u001b[32m48,\u001b[0m0\u001b[32m6\u001b[0m Lei",
+        "text": "548,06 Lei"
+      },
+      {
+        "hash": "255f5846f35c4fc50a5ee0386a5e1284fecba2337700b50fe871e64a98b0e859",
+        "timestamp": "2025-12-02T17:21:09.5764366+02:00",
+        "diff": "548,06 Lei",
+        "text": "548,06 Lei"
       }
     ]
   }

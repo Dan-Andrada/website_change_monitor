@@ -16,7 +16,7 @@ func Execute() {
 	switch os.Args[1] {
 	case "add":
 		if len(os.Args) < 5 {
-			fmt.Println("Usage: monitor add <url> <selector> <frequency>")
+			fmt.Println("Usage: monitor add <url> <css-selector> <frequency>")
 			return
 		}
 
@@ -33,7 +33,8 @@ func Execute() {
 			fmt.Println("Error:", err)
 			return
 		}
-		fmt.Println("URL added:", url)
+
+		fmt.Println("URL added:", url, "Selector:", selector, "Frequency:", frequency)
 
 	case "check":
 		items, err := monitor.LoadMonitors()
@@ -43,17 +44,19 @@ func Execute() {
 		}
 
 		for i := range items {
-			changed, err := monitor.CheckURL(&items[i])
+			changed, oldVal, newVal, err := monitor.CheckURL(&items[i])
 			if err != nil {
 				fmt.Println("Error checking:", items[i].URL, err)
 				continue
 			}
-
 			if changed {
-				fmt.Println("🔴 CHANGED:", items[i].URL)
+				fmt.Println("🔴 CHANGE DETECTED:", items[i].URL)
+				fmt.Println("   Old:", oldVal)
+				fmt.Println("   New:", newVal)
 			} else {
 				fmt.Println("🟢 NO CHANGE:", items[i].URL)
 			}
+
 		}
 
 		monitor.SaveMonitors(items)

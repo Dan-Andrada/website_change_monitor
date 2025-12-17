@@ -6,26 +6,23 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"os"
-	"strconv"
 	"strings"
+	"sync"
 	"time"
+
+	"website_change_monitor/internal/notifications"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/sergi/go-diff/diffmatchpatch"
 )
 
-// ParsePrice transformă un string de tip "548,06 Lei" în float64
-func ParsePrice(s string) (float64, error) {
-	s = strings.ReplaceAll(s, "Lei", "")
-	s = strings.TrimSpace(s)
-	s = strings.ReplaceAll(s, ".", "") // elimină separatorul de mii
-	s = strings.ReplaceAll(s, ",", ".")
-	return strconv.ParseFloat(s, 64)
-}
+/* =======================
+   STRUCTURI
+======================= */
 
-// ChangeRecord păstrează istoricul modificărilor
 type ChangeRecord struct {
 	Hash      string    `json:"hash"`
 	Timestamp time.Time `json:"timestamp"`
@@ -33,16 +30,29 @@ type ChangeRecord struct {
 	Text      string    `json:"text,omitempty"`
 }
 
-// MonitorItem reprezintă un site monitorizat
 type MonitorItem struct {
 	URL       string         `json:"url"`
 	Selector  string         `json:"selector"`
-	Frequency int            `json:"frequency"`
+	Frequency int            `json:"frequency"` // MINUTE
 	LastHash  string         `json:"last_hash"`
+	UseJS     bool           `json:"use_js"` // folosește JS rendering
 	History   []ChangeRecord `json:"history"`
 }
 
-// LoadMonitors încarcă lista de site-uri din JSON
+/* =======================
+   VARIABILE GLOBALE
+======================= */
+
+var (
+	itemsInMemory []MonitorItem
+	memMu         sync.Mutex
+	started       = make(map[string]bool)
+)
+
+/* =======================
+   LOAD / SAVE
+======================= */
+
 func LoadMonitors() ([]MonitorItem, error) {
 	data, err := os.ReadFile("data/monitors.json")
 	if err != nil {
@@ -51,13 +61,11 @@ func LoadMonitors() ([]MonitorItem, error) {
 		}
 		return nil, err
 	}
-
 	var items []MonitorItem
 	err = json.Unmarshal(data, &items)
 	return items, err
 }
 
-// SaveMonitors salvează lista de site-uri în JSON
 func SaveMonitors(items []MonitorItem) error {
 	data, err := json.MarshalIndent(items, "", "  ")
 	if err != nil {
@@ -66,36 +74,28 @@ func SaveMonitors(items []MonitorItem) error {
 	return os.WriteFile("data/monitors.json", data, 0644)
 }
 
-// AddURL adaugă un URL nou în monitorizare
-func AddURL(url, selector string, frequency int) error {
-	items, err := LoadMonitors()
-	if err != nil {
-		return err
-	}
-
-	for _, item := range items {
-		if item.URL == url && item.Selector == selector {
-			return fmt.Errorf("URL already exists with this selector")
-		}
-	}
-
-	items = append(items, MonitorItem{
-		URL:       url,
-		Selector:  selector,
-		Frequency: frequency,
-	})
-	return SaveMonitors(items)
+func SaveMonitorsFromMemory() {
+	memMu.Lock()
+	defer memMu.Unlock()
+	_ = SaveMonitors(itemsInMemory)
 }
 
-// HashContent calculează SHA256 pentru un text
+/* =======================
+   UTILS
+======================= */
+
 func HashContent(content []byte) string {
-	h := sha256.Sum256(content)
-	return fmt.Sprintf("%x", h)
+	sum := sha256.Sum256(content)
+	return fmt.Sprintf("%x", sum)
 }
 
-// CheckURL verifică un URL și returnează schimbarea, plus vechea și noua valoare
-func CheckURL(item *MonitorItem) (changed bool, oldValue, newValue string, err error) {
-	client := http.Client{Timeout: 10 * time.Second}
+/* =======================
+   CHECK URL
+======================= */
+
+func CheckURL(item *MonitorItem) (bool, string, string, error) {
+	client := http.Client{Timeout: 20 * time.Second}
+
 	req, err := http.NewRequest("GET", item.URL, nil)
 	if err != nil {
 		return false, "", "", err
@@ -113,16 +113,26 @@ func CheckURL(item *MonitorItem) (changed bool, oldValue, newValue string, err e
 		return false, "", "", err
 	}
 
-	doc, err := goquery.NewDocumentFromReader(bytes.NewReader(body))
-	if err != nil {
-		return false, "", "", err
+	var selectedText string
+
+	if item.UseJS {
+		// JS rendering pentru site-uri dinamice
+		selectedText, err = FetchTextWithJS(item.URL, item.Selector)
+		if err != nil {
+			return false, "", "", err
+		}
+	} else {
+		// site static
+		doc, err := goquery.NewDocumentFromReader(bytes.NewReader(body))
+		if err != nil {
+			return false, "", "", err
+		}
+		selectedText = strings.TrimSpace(doc.Find(item.Selector).Text())
 	}
 
-	selectedText := doc.Find(item.Selector).Text()
-	selectedText = strings.TrimSpace(selectedText)
 	newHash := HashContent([]byte(selectedText))
 
-	// Prima rulare
+	// 🔹 PRIMA rulare → salvăm hash
 	if item.LastHash == "" {
 		item.LastHash = newHash
 		item.History = append(item.History, ChangeRecord{
@@ -133,7 +143,7 @@ func CheckURL(item *MonitorItem) (changed bool, oldValue, newValue string, err e
 		return false, "", selectedText, nil
 	}
 
-	// Dacă s-a schimbat
+	// 🔹 SCHIMBARE
 	if newHash != item.LastHash {
 		oldText := ""
 		if len(item.History) > 0 {
@@ -141,16 +151,17 @@ func CheckURL(item *MonitorItem) (changed bool, oldValue, newValue string, err e
 		}
 
 		dmp := diffmatchpatch.New()
-		diffs := dmp.DiffMain(oldText, selectedText, false)
-		diffText := dmp.DiffPrettyText(diffs)
+		diff := dmp.DiffPrettyText(
+			dmp.DiffMain(oldText, selectedText, false),
+		)
 
+		item.LastHash = newHash
 		item.History = append(item.History, ChangeRecord{
 			Hash:      newHash,
 			Timestamp: time.Now(),
 			Text:      selectedText,
-			Diff:      diffText,
+			Diff:      diff,
 		})
-		item.LastHash = newHash
 
 		return true, oldText, selectedText, nil
 	}
@@ -158,48 +169,101 @@ func CheckURL(item *MonitorItem) (changed bool, oldValue, newValue string, err e
 	return false, "", selectedText, nil
 }
 
-// CheckAll verifică toate URL-urile și afișează schimbările cu diferența de preț
-func CheckAll() ([]MonitorItem, error) {
-	items, err := LoadMonitors()
+/* =======================
+   RUN MONITOR (SERVICE)
+======================= */
+
+func RunMonitorContinuously() {
+	logFile, err := os.OpenFile("monitor.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
-		return nil, err
+		fmt.Println("Cannot open log file:", err)
+		return
+	}
+	log.SetOutput(logFile)
+
+	log.Println("Starting monitoring service...")
+
+	// Load initial
+	itemsInMemory, err = LoadMonitors()
+	if err != nil {
+		log.Println("Failed to load monitors:", err)
+		return
 	}
 
-	changed := []MonitorItem{}
+	// Start monitors pentru toate itemele inițiale
+	memMu.Lock()
+	for i := range itemsInMemory {
+		startMonitor(&itemsInMemory[i])
+	}
+	memMu.Unlock()
 
-	for i := range items {
-		changedNow, oldText, newText, err := CheckURL(&items[i])
+	reloadTicker := time.NewTicker(15 * time.Second)
+	defer reloadTicker.Stop()
+
+	for range reloadTicker.C {
+		// Reload JSON pentru a detecta iteme noi
+		newItems, err := LoadMonitors()
 		if err != nil {
-			fmt.Println("Eroare la verificare:", items[i].URL, err)
+			log.Println("Failed to reload monitors:", err)
 			continue
 		}
-		if changedNow {
-			fmt.Println("🔴 CHANGED:", items[i].URL)
-			fmt.Println("Old value:", oldText)
-			fmt.Println("New value:", newText)
 
-			oldPrice, err1 := ParsePrice(oldText)
-			newPrice, err2 := ParsePrice(newText)
-			if err1 == nil && err2 == nil {
-				diff := newPrice - oldPrice
-				if diff > 0 {
-					fmt.Printf("Price increased by %.2f Lei\n", diff)
-				} else if diff < 0 {
-					fmt.Printf("Price decreased by %.2f Lei\n", -diff)
-				} else {
-					fmt.Println("Price unchanged")
+		memMu.Lock()
+		itemsInMemory = newItems
+		// Pornim monitor pentru orice URL nou
+		for i := range itemsInMemory {
+			startMonitor(&itemsInMemory[i])
+		}
+		memMu.Unlock()
+	}
+}
+
+/* =======================
+   START SINGLE MONITOR
+======================= */
+
+func startMonitor(item *MonitorItem) {
+	key := item.URL + "|" + item.Selector
+	if started[key] {
+		return
+	}
+	started[key] = true
+
+	log.Println("Starting monitor for", item.URL)
+
+	go func(it *MonitorItem) {
+		// ✅ CHECK IMEDIAT → hash inițial
+		_, _, _, err := CheckURL(it)
+		if err != nil {
+			log.Println("Initial check failed for", it.URL, err)
+		} else {
+			SaveMonitorsFromMemory()
+			log.Println("Initial hash saved for", it.URL)
+		}
+
+		ticker := time.NewTicker(time.Duration(it.Frequency) * time.Minute)
+		defer ticker.Stop()
+
+		for range ticker.C {
+			changed, oldText, newText, err := CheckURL(it)
+			if err != nil {
+				log.Println("Error checking", it.URL, err)
+				continue
+			}
+
+			if changed {
+				log.Println("CHANGED:", it.URL)
+				SaveMonitorsFromMemory()
+
+				msg := fmt.Sprintf(
+					"Old value: %s\nNew value: %s",
+					oldText, newText,
+				)
+
+				if err := notifications.SendEmailNotification(it.URL, msg); err != nil {
+					log.Println("Email error:", err)
 				}
 			}
-			changed = append(changed, items[i])
-		} else {
-			fmt.Println("🟢 NO CHANGE:", items[i].URL)
 		}
-	}
-
-	err = SaveMonitors(items)
-	if err != nil {
-		return nil, err
-	}
-
-	return changed, nil
+	}(item)
 }

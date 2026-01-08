@@ -67,6 +67,50 @@
         "timestamp": "2025-12-13T23:13:01.9346655+02:00",
         "diff": "\u001b[32m550,53 Lei\u001b[0m",
         "text": "550,53 Lei"
+      },
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2025-12-27T20:53:00.6443862+02:00",
+        "diff": "\u001b[31m550,53 Lei\u001b[0m"
+      },
+      {
+        "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+        "timestamp": "2025-12-27T21:41:01.2387829+02:00",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m",
+        "text": "550,53 Lei"
+      },
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2025-12-29T00:11:52.519186+02:00",
+        "diff": "\u001b[31m550,53 Lei\u001b[0m"
+      },
+      {
+        "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+        "timestamp": "2025-12-29T15:26:07.2978254+02:00",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m",
+        "text": "550,53 Lei"
+      },
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2026-01-06T10:56:16.109206+02:00",
+        "diff": "\u001b[31m550,53 Lei\u001b[0m"
+      },
+      {
+        "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+        "timestamp": "2026-01-08T13:39:20.7397766+02:00",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m",
+        "text": "550,53 Lei"
+      },
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2026-01-08T17:36:21.3520496+02:00",
+        "diff": "\u001b[31m550,53 Lei\u001b[0m"
+      },
+      {
+        "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+        "timestamp": "2026-01-08T17:38:21.7935181+02:00",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m",
+        "text": "550,53 Lei"
       }
     ]
   },
@@ -127,6 +171,18 @@
       {
         "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "timestamp": "2025-12-16T17:59:50.0494346+02:00"
+      }
+    ]
+  },
+  {
+    "url": "https://www.emag.ro/scrub-de-corp-organic-shop-coffee-and-sugar-250-ml-2608e/pd/D0VBTHBBM/",
+    "selector": ".main-price",
+    "frequency": 1,
+    "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "history": [
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2025-12-17T15:49:17.8070143+02:00"
       }
     ]
   }

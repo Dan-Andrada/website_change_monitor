@@ -1,45 +1,9 @@
 [
   {
-    "url": "https://google.com",
-    "selector": "",
-    "frequency": 0,
-    "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "history": [
-      {
-        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "timestamp": "2025-11-22T16:10:36.6623016+02:00"
-      }
-    ]
-  },
-  {
-    "url": "https://facebook.com",
-    "selector": "",
-    "frequency": 0,
-    "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "history": [
-      {
-        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "timestamp": "2025-11-22T16:10:37.2225025+02:00"
-      }
-    ]
-  },
-  {
-    "url": "https://instagram.com",
-    "selector": "",
-    "frequency": 0,
-    "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "history": [
-      {
-        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "timestamp": "2025-11-22T16:10:37.874607+02:00"
-      }
-    ]
-  },
-  {
     "url": "https://www.emag.ro/telefon-mobil-samsung-galaxy-a16-dual-sim-128gb-4gb-ram-4g-black-sm-a165fzkbeue/pd/DVJ1YZYBM/",
     "selector": "[data-test=main-price]",
-    "frequency": 60,
-    "last_hash": "255f5846f35c4fc50a5ee0386a5e1284fecba2337700b50fe871e64a98b0e859",
+    "frequency": 1,
+    "last_hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
     "history": [
       {
         "hash": "156f1a291101b7af5ed0ab2543333edfae387e650d20593df1f1ca96afea066a",
@@ -63,6 +27,162 @@
         "timestamp": "2025-12-02T17:21:09.5764366+02:00",
         "diff": "548,06 Lei",
         "text": "548,06 Lei"
+      },
+      {
+        "hash": "88583e755e367c169f28bdbaa9919e70aaf0f7bbb2a071faed5c37404e756124",
+        "timestamp": "2025-12-03T16:17:44.9689775+02:00",
+        "diff": "5\u001b[31m48\u001b[0m\u001b[32m39\u001b[0m,\u001b[31m0\u001b[0m6\u001b[32m2\u001b[0m Lei",
+        "text": "539,62 Lei"
+      },
+      {
+        "hash": "8b28afe06daa65a4b1cdcf9b8e61f2d7c3954b1658003dd3101315e294f27e23",
+        "timestamp": "2025-12-04T14:22:22.9271649+02:00",
+        "diff": "5\u001b[31m39\u001b[0m\u001b[32m57\u001b[0m,\u001b[31m62\u001b[0m\u001b[32m77\u001b[0m Lei",
+        "text": "557,77 Lei"
+      },
+      {
+        "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+        "timestamp": "2025-12-04T14:32:22.8622123+02:00",
+        "diff": "55\u001b[31m7\u001b[0m\u001b[32m0\u001b[0m,\u001b[31m77\u001b[0m\u001b[32m53\u001b[0m Lei",
+        "text": "550,53 Lei"
+      },
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2025-12-12T22:03:56.72014+02:00",
+        "diff": "\u001b[31m550,53 Lei\u001b[0m"
+      },
+      {
+        "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+        "timestamp": "2025-12-13T10:15:02.7544618+02:00",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m",
+        "text": "550,53 Lei"
+      },
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2025-12-13T23:10:01.4815846+02:00",
+        "diff": "\u001b[31m550,53 Lei\u001b[0m"
+      },
+      {
+        "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+        "timestamp": "2025-12-13T23:13:01.9346655+02:00",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m",
+        "text": "550,53 Lei"
+      },
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2025-12-27T20:53:00.6443862+02:00",
+        "diff": "\u001b[31m550,53 Lei\u001b[0m"
+      },
+      {
+        "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+        "timestamp": "2025-12-27T21:41:01.2387829+02:00",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m",
+        "text": "550,53 Lei"
+      },
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2025-12-29T00:11:52.519186+02:00",
+        "diff": "\u001b[31m550,53 Lei\u001b[0m"
+      },
+      {
+        "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+        "timestamp": "2025-12-29T15:26:07.2978254+02:00",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m",
+        "text": "550,53 Lei"
+      },
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2026-01-06T10:56:16.109206+02:00",
+        "diff": "\u001b[31m550,53 Lei\u001b[0m"
+      },
+      {
+        "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+        "timestamp": "2026-01-08T13:39:20.7397766+02:00",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m",
+        "text": "550,53 Lei"
+      },
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2026-01-08T17:36:21.3520496+02:00",
+        "diff": "\u001b[31m550,53 Lei\u001b[0m"
+      },
+      {
+        "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+        "timestamp": "2026-01-08T17:38:21.7935181+02:00",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m",
+        "text": "550,53 Lei"
+      }
+    ]
+  },
+  {
+    "url": "https://www.emag.ro/set-3-x-cafea-capsule-nescafe-dolce-gusto-cafe-au-lait-48-buc-480-g-12148063/pd/DP9TS0BBM/",
+    "selector": ".main-price",
+    "frequency": 2,
+    "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "history": [
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2025-12-03T18:09:48.6195385+02:00"
+      }
+    ]
+  },
+  {
+    "url": "https://www.emag.ro/ondulator-multistyler-dyson-hs08-airwrap-i-d-tm-conexiune-bluetoothr-3-trepte-de-viteza-3-trepte-de-temperatura-amber-silk-pink-champagne-123682-01/pd/DZ1C143BM/",
+    "selector": ".main-price",
+    "frequency": 3,
+    "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "history": [
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2025-12-03T18:10:13.611113+02:00"
+      }
+    ]
+  },
+  {
+    "url": "https://www.emag.ro/camera-video-sport-insta360-go3s-4k-128gb-alb-cinsaatago3s128w/pd/DLGGRJYBM/",
+    "selector": ".main-price",
+    "frequency": 5,
+    "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "history": [
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2025-12-04T20:49:39.2182131+02:00"
+      }
+    ]
+  },
+  {
+    "url": "https://www.emag.ro/camera-video-sport-insta360-go3s-4k-128gb-negru-cinsaatago3s128b/pd/DZGGRJYBM/",
+    "selector": ".main-price",
+    "frequency": 5,
+    "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "history": [
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2025-12-04T20:49:39.7277954+02:00"
+      }
+    ]
+  },
+  {
+    "url": "https://www.emag.ro/perie-cu-aer-cald-philips-seria-5000-1000w-tehnologie-de-distributie-uniforma-a-caldurii-de-4-ori-mai-multi-ioni-5-accesorii-diametru-perie-38mm-setare-temperatura-de-ingrijire-si-aer-rece-accesoriu-d/pd/D98MVLMBM/",
+    "selector": ".main-price",
+    "frequency": 5,
+    "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "history": [
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2025-12-16T17:59:50.0494346+02:00"
+      }
+    ]
+  },
+  {
+    "url": "https://www.emag.ro/scrub-de-corp-organic-shop-coffee-and-sugar-250-ml-2608e/pd/D0VBTHBBM/",
+    "selector": ".main-price",
+    "frequency": 1,
+    "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "history": [
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2025-12-17T15:49:17.8070143+02:00"
       }
     ]
   }

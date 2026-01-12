@@ -1,7 +1,7 @@
 package main
 
-import "website_change_monitor/internal/monitor"
+import "website_change_monitor/cmd"
 
 func main() {
-	monitor.RunMonitorContinuously()
+	cmd.Execute()
 }

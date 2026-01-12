@@ -27,11 +27,12 @@ import (
 ======================= */
 
 type ChangeRecord struct {
-	Hash       string    `json:"hash"`
-	Timestamp  time.Time `json:"timestamp"`
-	Text       string    `json:"text"`
-	Diff       string    `json:"diff,omitempty"`
-	Screenshot string    `json:"screenshot,omitempty"`
+	Hash             string    `json:"hash"`
+	Timestamp        time.Time `json:"timestamp"`
+	Text             string    `json:"text"`
+	Diff             string    `json:"diff,omitempty"`
+	ScreenshotBefore string    `json:"screenshot_before,omitempty"`
+	ScreenshotAfter  string    `json:"screenshot_after,omitempty"`
 }
 
 type MonitorItem struct {
@@ -89,7 +90,7 @@ func hashText(s string) string {
    SCREENSHOT
 ======================= */
 
-func captureScreenshot(url string) (string, error) {
+func captureScreenshot(url, label string) (string, error) {
 	opts := append(chromedp.DefaultExecAllocatorOptions[:],
 		chromedp.ExecPath(`C:\Program Files\Google\Chrome\Application\chrome.exe`),
 	)
@@ -116,9 +117,14 @@ func captureScreenshot(url string) (string, error) {
 	}
 
 	_ = os.MkdirAll("screenshots", 0755)
-	filename := fmt.Sprintf("screenshots/%d.png", time.Now().UnixNano())
-	err = os.WriteFile(filename, buf, 0644)
 
+	filename := fmt.Sprintf(
+		"screenshots/%s_%d.png",
+		label,
+		time.Now().UnixNano(),
+	)
+
+	err = os.WriteFile(filename, buf, 0644)
 	return filepath.ToSlash(filename), err
 }
 
@@ -133,52 +139,72 @@ func check(item *MonitorItem) (bool, string, string, error) {
 	}
 	defer resp.Body.Close()
 
-	body, _ := io.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return false, "", "", err
+	}
+
 	doc, err := goquery.NewDocumentFromReader(bytes.NewReader(body))
 	if err != nil {
 		return false, "", "", err
 	}
 
-	text := strings.TrimSpace(doc.Find(item.Selector).Text())
-	newHash := hashText(text)
+	// textul monitorizat
+	newText := strings.TrimSpace(doc.Find(item.Selector).Text())
+	newHash := hashText(newText)
 
+	// primul run: doar salvăm starea inițială
 	if item.LastHash == "" {
 		item.LastHash = newHash
 		item.History = append(item.History, ChangeRecord{
 			Hash:      newHash,
 			Timestamp: time.Now(),
-			Text:      text,
+			Text:      newText,
 		})
-		return false, "", text, nil
+		return false, "", newText, nil
 	}
 
-	if newHash != item.LastHash {
-		old := item.History[len(item.History)-1].Text
-
-		dmp := diffmatchpatch.New()
-		diff := dmp.DiffPrettyText(dmp.DiffMain(old, text, false))
-
-		log.Println("📸 About to capture screenshot")
-		ss, err := captureScreenshot(item.URL)
-		if err != nil {
-			log.Println("❌ Screenshot error:", err)
-		} else {
-			log.Println("✅ Screenshot path:", ss)
-		}
-
-		item.LastHash = newHash
-		item.History = append(item.History, ChangeRecord{
-			Hash:       newHash,
-			Timestamp:  time.Now(),
-			Text:       text,
-			Diff:       diff,
-			Screenshot: ss,
-		})
-
-		return true, old, text, nil
+	// fără schimbare
+	if newHash == item.LastHash {
+		return false, "", newText, nil
 	}
 
-	return false, "", text, nil
+	// ===== SCHIMBARE DETECTATĂ =====
+
+	oldText := item.History[len(item.History)-1].Text
+
+	// 📸 BEFORE screenshot (starea veche)
+	log.Println("📸 Capturing BEFORE screenshot")
+	beforeSS, err := captureScreenshot(item.URL, "before")
+	if err != nil {
+		log.Println("❌ Before screenshot error:", err)
+	}
+
+	// diff text
+	dmp := diffmatchpatch.New()
+	diff := dmp.DiffPrettyText(
+		dmp.DiffMain(oldText, newText, false),
+	)
+
+	// 📸 AFTER screenshot (starea nouă)
+	log.Println("📸 Capturing AFTER screenshot")
+	afterSS, err := captureScreenshot(item.URL, "after")
+	if err != nil {
+		log.Println("❌ After screenshot error:", err)
+	}
+
+	// salvăm noua stare
+	item.LastHash = newHash
+	item.History = append(item.History, ChangeRecord{
+		Hash:             newHash,
+		Timestamp:        time.Now(),
+		Text:             newText,
+		Diff:             diff,
+		ScreenshotBefore: beforeSS,
+		ScreenshotAfter:  afterSS,
+	})
+
+	return true, oldText, newText, nil
 }
 
 /* =======================
@@ -238,4 +264,31 @@ func RunMonitorContinuously() {
 	}
 
 	select {}
+}
+
+func Add(url, selector string, frequency int) error {
+	mu.Lock()
+	defer mu.Unlock()
+
+	// load existing
+	items, err := LoadMonitors()
+	if err != nil {
+		return err
+	}
+
+	// prevent duplicates
+	for _, m := range items {
+		if m.URL == url && m.Selector == selector {
+			return fmt.Errorf("monitor already exists")
+		}
+	}
+
+	items = append(items, MonitorItem{
+		URL:       url,
+		Selector:  selector,
+		Frequency: frequency,
+	})
+
+	data, _ := json.MarshalIndent(items, "", "  ")
+	return os.WriteFile("data/monitors.json", data, 0644)
 }

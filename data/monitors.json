@@ -3,7 +3,7 @@
     "url": "https://www.emag.ro/telefon-mobil-samsung-galaxy-a16-dual-sim-128gb-4gb-ram-4g-black-sm-a165fzkbeue/pd/DVJ1YZYBM/",
     "selector": "[data-test=main-price]",
     "frequency": 1,
-    "last_hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+    "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "history": [
       {
         "hash": "156f1a291101b7af5ed0ab2543333edfae387e650d20593df1f1ca96afea066a",
@@ -13,104 +13,138 @@
       {
         "hash": "255f5846f35c4fc50a5ee0386a5e1284fecba2337700b50fe871e64a98b0e859",
         "timestamp": "2025-12-02T17:04:18.7644241+02:00",
-        "diff": "5\u001b[32m4\u001b[0m8\u001b[31m0\u001b[0m,0\u001b[31m0\u001b[0m\u001b[32m6\u001b[0m Lei",
-        "text": "600,50 Lei"
+        "text": "600,50 Lei",
+        "diff": "5\u001b[32m4\u001b[0m8\u001b[31m0\u001b[0m,0\u001b[31m0\u001b[0m\u001b[32m6\u001b[0m Lei"
       },
       {
         "hash": "48aebbb87d236e09f38f9108f84e61543474ae772f09831ae9318ee816066102",
         "timestamp": "2025-12-02T17:14:28.9916835+02:00",
-        "diff": "\u001b[31m600,\u001b[0m5\u001b[32m48,\u001b[0m0\u001b[32m6\u001b[0m Lei",
-        "text": "548,06 Lei"
+        "text": "548,06 Lei",
+        "diff": "\u001b[31m600,\u001b[0m5\u001b[32m48,\u001b[0m0\u001b[32m6\u001b[0m Lei"
       },
       {
         "hash": "255f5846f35c4fc50a5ee0386a5e1284fecba2337700b50fe871e64a98b0e859",
         "timestamp": "2025-12-02T17:21:09.5764366+02:00",
-        "diff": "548,06 Lei",
-        "text": "548,06 Lei"
+        "text": "548,06 Lei",
+        "diff": "548,06 Lei"
       },
       {
         "hash": "88583e755e367c169f28bdbaa9919e70aaf0f7bbb2a071faed5c37404e756124",
         "timestamp": "2025-12-03T16:17:44.9689775+02:00",
-        "diff": "5\u001b[31m48\u001b[0m\u001b[32m39\u001b[0m,\u001b[31m0\u001b[0m6\u001b[32m2\u001b[0m Lei",
-        "text": "539,62 Lei"
+        "text": "539,62 Lei",
+        "diff": "5\u001b[31m48\u001b[0m\u001b[32m39\u001b[0m,\u001b[31m0\u001b[0m6\u001b[32m2\u001b[0m Lei"
       },
       {
         "hash": "8b28afe06daa65a4b1cdcf9b8e61f2d7c3954b1658003dd3101315e294f27e23",
         "timestamp": "2025-12-04T14:22:22.9271649+02:00",
-        "diff": "5\u001b[31m39\u001b[0m\u001b[32m57\u001b[0m,\u001b[31m62\u001b[0m\u001b[32m77\u001b[0m Lei",
-        "text": "557,77 Lei"
+        "text": "557,77 Lei",
+        "diff": "5\u001b[31m39\u001b[0m\u001b[32m57\u001b[0m,\u001b[31m62\u001b[0m\u001b[32m77\u001b[0m Lei"
       },
       {
         "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
         "timestamp": "2025-12-04T14:32:22.8622123+02:00",
-        "diff": "55\u001b[31m7\u001b[0m\u001b[32m0\u001b[0m,\u001b[31m77\u001b[0m\u001b[32m53\u001b[0m Lei",
-        "text": "550,53 Lei"
+        "text": "550,53 Lei",
+        "diff": "55\u001b[31m7\u001b[0m\u001b[32m0\u001b[0m,\u001b[31m77\u001b[0m\u001b[32m53\u001b[0m Lei"
       },
       {
         "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "timestamp": "2025-12-12T22:03:56.72014+02:00",
+        "text": "",
         "diff": "\u001b[31m550,53 Lei\u001b[0m"
       },
       {
         "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
         "timestamp": "2025-12-13T10:15:02.7544618+02:00",
-        "diff": "\u001b[32m550,53 Lei\u001b[0m",
-        "text": "550,53 Lei"
+        "text": "550,53 Lei",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m"
       },
       {
         "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "timestamp": "2025-12-13T23:10:01.4815846+02:00",
+        "text": "",
         "diff": "\u001b[31m550,53 Lei\u001b[0m"
       },
       {
         "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
         "timestamp": "2025-12-13T23:13:01.9346655+02:00",
-        "diff": "\u001b[32m550,53 Lei\u001b[0m",
-        "text": "550,53 Lei"
+        "text": "550,53 Lei",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m"
       },
       {
         "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "timestamp": "2025-12-27T20:53:00.6443862+02:00",
+        "text": "",
         "diff": "\u001b[31m550,53 Lei\u001b[0m"
       },
       {
         "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
         "timestamp": "2025-12-27T21:41:01.2387829+02:00",
-        "diff": "\u001b[32m550,53 Lei\u001b[0m",
-        "text": "550,53 Lei"
+        "text": "550,53 Lei",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m"
       },
       {
         "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "timestamp": "2025-12-29T00:11:52.519186+02:00",
+        "text": "",
         "diff": "\u001b[31m550,53 Lei\u001b[0m"
       },
       {
         "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
         "timestamp": "2025-12-29T15:26:07.2978254+02:00",
-        "diff": "\u001b[32m550,53 Lei\u001b[0m",
-        "text": "550,53 Lei"
+        "text": "550,53 Lei",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m"
       },
       {
         "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "timestamp": "2026-01-06T10:56:16.109206+02:00",
+        "text": "",
         "diff": "\u001b[31m550,53 Lei\u001b[0m"
       },
       {
         "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
         "timestamp": "2026-01-08T13:39:20.7397766+02:00",
-        "diff": "\u001b[32m550,53 Lei\u001b[0m",
-        "text": "550,53 Lei"
+        "text": "550,53 Lei",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m"
       },
       {
         "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "timestamp": "2026-01-08T17:36:21.3520496+02:00",
+        "text": "",
         "diff": "\u001b[31m550,53 Lei\u001b[0m"
       },
       {
         "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
         "timestamp": "2026-01-08T17:38:21.7935181+02:00",
+        "text": "550,53 Lei",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m"
+      },
+      {
+        "hash": "7fa3279bfdd6ee8b08c28faa6426f02ddf4d7cd08e5615d48df0302bc0ff5d5f",
+        "timestamp": "2026-01-09T12:31:19.8370423+02:00",
+        "text": "550,52 Lei",
+        "diff": "550,5\u001b[31m3\u001b[0m\u001b[32m2\u001b[0m Lei"
+      },
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2026-01-09T12:32:13.3339901+02:00",
+        "text": "",
+        "diff": "\u001b[31m550,52 Lei\u001b[0m"
+      },
+      {
+        "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+        "timestamp": "2026-01-12T14:15:30.2106034+02:00",
+        "text": "550,53 Lei",
         "diff": "\u001b[32m550,53 Lei\u001b[0m",
-        "text": "550,53 Lei"
+        "screenshot_before": "screenshots/before_1768220124436773800.png",
+        "screenshot_after": "screenshots/after_1768220130116192700.png"
+      },
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2026-01-12T14:16:27.2947851+02:00",
+        "text": "",
+        "diff": "\u001b[31m550,53 Lei\u001b[0m",
+        "screenshot_before": "screenshots/before_1768220182496737200.png",
+        "screenshot_after": "screenshots/after_1768220187210972900.png"
       }
     ]
   },
@@ -122,7 +156,8 @@
     "history": [
       {
         "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "timestamp": "2025-12-03T18:09:48.6195385+02:00"
+        "timestamp": "2025-12-03T18:09:48.6195385+02:00",
+        "text": ""
       }
     ]
   },
@@ -134,7 +169,8 @@
     "history": [
       {
         "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "timestamp": "2025-12-03T18:10:13.611113+02:00"
+        "timestamp": "2025-12-03T18:10:13.611113+02:00",
+        "text": ""
       }
     ]
   },
@@ -146,7 +182,8 @@
     "history": [
       {
         "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "timestamp": "2025-12-04T20:49:39.2182131+02:00"
+        "timestamp": "2025-12-04T20:49:39.2182131+02:00",
+        "text": ""
       }
     ]
   },
@@ -158,7 +195,8 @@
     "history": [
       {
         "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "timestamp": "2025-12-04T20:49:39.7277954+02:00"
+        "timestamp": "2025-12-04T20:49:39.7277954+02:00",
+        "text": ""
       }
     ]
   },
@@ -170,19 +208,29 @@
     "history": [
       {
         "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "timestamp": "2025-12-16T17:59:50.0494346+02:00"
+        "timestamp": "2025-12-16T17:59:50.0494346+02:00",
+        "text": ""
       }
     ]
   },
   {
-    "url": "https://www.emag.ro/scrub-de-corp-organic-shop-coffee-and-sugar-250-ml-2608e/pd/D0VBTHBBM/",
-    "selector": ".main-price",
+    "url": "http://127.0.0.1:5500/test.html",
+    "selector": "#price",
     "frequency": 1,
-    "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "last_hash": "7421fd1a10c9a65670e22e337b06ab5fad1a26f39317a17977a3117a9db8594e",
     "history": [
       {
-        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "timestamp": "2025-12-17T15:49:17.8070143+02:00"
+        "hash": "b5c5cd650aa167610248709b2f97b615bffc51068f99654ded21a556989c1c09",
+        "timestamp": "2026-01-12T15:39:37.6339862+02:00",
+        "text": "10008 Lei"
+      },
+      {
+        "hash": "7421fd1a10c9a65670e22e337b06ab5fad1a26f39317a17977a3117a9db8594e",
+        "timestamp": "2026-01-12T15:40:45.6746464+02:00",
+        "text": "18 Lei",
+        "diff": "1\u001b[31m000\u001b[0m8 Lei",
+        "screenshot_before": "screenshots/before_1768225241716622300.png",
+        "screenshot_after": "screenshots/after_1768225245559102900.png"
       }
     ]
   }

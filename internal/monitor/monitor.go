@@ -151,6 +151,12 @@ func check(item *MonitorItem) (bool, string, string, error) {
 
 	// textul monitorizat
 	newText := strings.TrimSpace(doc.Find(item.Selector).Text())
+
+	if newText == "" {
+		log.Println("⚠️ Empty value detected, skipping check for", item.URL)
+		return false, "", item.History[len(item.History)-1].Text, nil
+	}
+
 	newHash := hashText(newText)
 
 	// primul run: doar salvăm starea inițială
@@ -270,25 +276,25 @@ func Add(url, selector string, frequency int) error {
 	mu.Lock()
 	defer mu.Unlock()
 
-	// load existing
-	items, err := LoadMonitors()
+	// load în variabila globală
+	var err error
+	monitors, err = LoadMonitors()
 	if err != nil {
 		return err
 	}
 
-	// prevent duplicates
-	for _, m := range items {
+	for _, m := range monitors {
 		if m.URL == url && m.Selector == selector {
 			return fmt.Errorf("monitor already exists")
 		}
 	}
 
-	items = append(items, MonitorItem{
+	monitors = append(monitors, MonitorItem{
 		URL:       url,
 		Selector:  selector,
 		Frequency: frequency,
 	})
 
-	data, _ := json.MarshalIndent(items, "", "  ")
-	return os.WriteFile("data/monitors.json", data, 0644)
+	SaveMonitors()
+	return nil
 }

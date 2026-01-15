@@ -36,26 +36,6 @@ go build -o gomonitor.exe
 
 ---
 
-## 3. Running the Application
-
-### 3.1 Prerequisites
-
-- Go installed on the system
-- Google Chrome installed (required for screenshot capture)
-- Internet access
-
----
-
-### 3.2 Build
-
-Before running the application, it must be compiled:
-
-```bash
-go build -o gomonitor.exe
-```
-
----
-
 ### 3.3 CLI Commands
 
 The application is fully controlled through command-line arguments and supports the following commands:

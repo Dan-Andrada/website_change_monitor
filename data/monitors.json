@@ -3,7 +3,7 @@
     "url": "https://www.emag.ro/telefon-mobil-samsung-galaxy-a16-dual-sim-128gb-4gb-ram-4g-black-sm-a165fzkbeue/pd/DVJ1YZYBM/",
     "selector": "[data-test=main-price]",
     "frequency": 1,
-    "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "last_hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
     "history": [
       {
         "hash": "156f1a291101b7af5ed0ab2543333edfae387e650d20593df1f1ca96afea066a",
@@ -145,6 +145,77 @@
         "diff": "\u001b[31m550,53 Lei\u001b[0m",
         "screenshot_before": "screenshots/before_1768220182496737200.png",
         "screenshot_after": "screenshots/after_1768220187210972900.png"
+      },
+      {
+        "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+        "timestamp": "2026-01-12T17:04:31.8038916+02:00",
+        "text": "550,53 Lei",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m",
+        "screenshot_before": "screenshots/before_1768230266004041400.png",
+        "screenshot_after": "screenshots/after_1768230271703466800.png"
+      },
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2026-01-12T18:05:29.0170652+02:00",
+        "text": "",
+        "diff": "\u001b[31m550,53 Lei\u001b[0m",
+        "screenshot_before": "screenshots/before_1768233924516290400.png",
+        "screenshot_after": "screenshots/after_1768233928885262400.png"
+      },
+      {
+        "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+        "timestamp": "2026-01-12T18:41:31.9427436+02:00",
+        "text": "550,53 Lei",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m",
+        "screenshot_before": "screenshots/before_1768236086067168500.png",
+        "screenshot_after": "screenshots/after_1768236091826584600.png"
+      },
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2026-01-12T19:41:28.896916+02:00",
+        "text": "",
+        "diff": "\u001b[31m550,53 Lei\u001b[0m",
+        "screenshot_before": "screenshots/before_1768239684249797300.png",
+        "screenshot_after": "screenshots/after_1768239688769556400.png"
+      },
+      {
+        "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+        "timestamp": "2026-01-12T19:49:31.752066+02:00",
+        "text": "550,53 Lei",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m",
+        "screenshot_before": "screenshots/before_1768240165813389400.png",
+        "screenshot_after": "screenshots/after_1768240171637677700.png"
+      },
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2026-01-12T20:05:28.9431113+02:00",
+        "text": "",
+        "diff": "\u001b[31m550,53 Lei\u001b[0m",
+        "screenshot_before": "screenshots/before_1768241124096179200.png",
+        "screenshot_after": "screenshots/after_1768241128797594700.png"
+      },
+      {
+        "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+        "timestamp": "2026-01-12T20:49:31.8241643+02:00",
+        "text": "550,53 Lei",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m",
+        "screenshot_before": "screenshots/before_1768243765932637500.png",
+        "screenshot_after": "screenshots/after_1768243771723372200.png"
+      },
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2026-01-12T21:05:28.962546+02:00",
+        "text": "",
+        "diff": "\u001b[31m550,53 Lei\u001b[0m",
+        "screenshot_before": "screenshots/before_1768244724183472800.png",
+        "screenshot_after": "screenshots/after_1768244728802085100.png"
+      },
+      {
+        "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+        "timestamp": "2026-01-14T11:33:11.7940079+02:00",
+        "text": "550,53 Lei",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m",
+        "screenshot_before": "screenshots/before_1768383185446875700.png"
       }
     ]
   },
@@ -210,27 +281,6 @@
         "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "timestamp": "2025-12-16T17:59:50.0494346+02:00",
         "text": ""
-      }
-    ]
-  },
-  {
-    "url": "http://127.0.0.1:5500/test.html",
-    "selector": "#price",
-    "frequency": 1,
-    "last_hash": "7421fd1a10c9a65670e22e337b06ab5fad1a26f39317a17977a3117a9db8594e",
-    "history": [
-      {
-        "hash": "b5c5cd650aa167610248709b2f97b615bffc51068f99654ded21a556989c1c09",
-        "timestamp": "2026-01-12T15:39:37.6339862+02:00",
-        "text": "10008 Lei"
-      },
-      {
-        "hash": "7421fd1a10c9a65670e22e337b06ab5fad1a26f39317a17977a3117a9db8594e",
-        "timestamp": "2026-01-12T15:40:45.6746464+02:00",
-        "text": "18 Lei",
-        "diff": "1\u001b[31m000\u001b[0m8 Lei",
-        "screenshot_before": "screenshots/before_1768225241716622300.png",
-        "screenshot_after": "screenshots/after_1768225245559102900.png"
       }
     ]
   }

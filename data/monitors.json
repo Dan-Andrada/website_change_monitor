@@ -3,7 +3,7 @@
     "url": "https://www.emag.ro/telefon-mobil-samsung-galaxy-a16-dual-sim-128gb-4gb-ram-4g-black-sm-a165fzkbeue/pd/DVJ1YZYBM/",
     "selector": "[data-test=main-price]",
     "frequency": 1,
-    "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "last_hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
     "history": [
       {
         "hash": "156f1a291101b7af5ed0ab2543333edfae387e650d20593df1f1ca96afea066a",
@@ -193,6 +193,29 @@
         "diff": "\u001b[31m550,53 Lei\u001b[0m",
         "screenshot_before": "screenshots/before_1768241124096179200.png",
         "screenshot_after": "screenshots/after_1768241128797594700.png"
+      },
+      {
+        "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+        "timestamp": "2026-01-12T20:49:31.8241643+02:00",
+        "text": "550,53 Lei",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m",
+        "screenshot_before": "screenshots/before_1768243765932637500.png",
+        "screenshot_after": "screenshots/after_1768243771723372200.png"
+      },
+      {
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2026-01-12T21:05:28.962546+02:00",
+        "text": "",
+        "diff": "\u001b[31m550,53 Lei\u001b[0m",
+        "screenshot_before": "screenshots/before_1768244724183472800.png",
+        "screenshot_after": "screenshots/after_1768244728802085100.png"
+      },
+      {
+        "hash": "6f0e829cd695fd68a324a33388e74eff970cf2da41ba46ac870e0ac6ddbbeccb",
+        "timestamp": "2026-01-14T11:33:11.7940079+02:00",
+        "text": "550,53 Lei",
+        "diff": "\u001b[32m550,53 Lei\u001b[0m",
+        "screenshot_before": "screenshots/before_1768383185446875700.png"
       }
     ]
   },
@@ -211,7 +234,7 @@
   },
   {
     "url": "https://www.emag.ro/ondulator-multistyler-dyson-hs08-airwrap-i-d-tm-conexiune-bluetoothr-3-trepte-de-viteza-3-trepte-de-temperatura-amber-silk-pink-champagne-123682-01/pd/DZ1C143BM/",
-    "selector": "[data-test=main-price]",
+    "selector": ".main-price",
     "frequency": 3,
     "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "history": [
@@ -224,7 +247,7 @@
   },
   {
     "url": "https://www.emag.ro/camera-video-sport-insta360-go3s-4k-128gb-alb-cinsaatago3s128w/pd/DLGGRJYBM/",
-    "selector": "[data-test=main-price]",
+    "selector": ".main-price",
     "frequency": 5,
     "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "history": [
@@ -237,7 +260,7 @@
   },
   {
     "url": "https://www.emag.ro/camera-video-sport-insta360-go3s-4k-128gb-negru-cinsaatago3s128b/pd/DZGGRJYBM/",
-    "selector": "[data-test=main-price]",
+    "selector": ".main-price",
     "frequency": 5,
     "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "history": [
@@ -250,7 +273,7 @@
   },
   {
     "url": "https://www.emag.ro/perie-cu-aer-cald-philips-seria-5000-1000w-tehnologie-de-distributie-uniforma-a-caldurii-de-4-ori-mai-multi-ioni-5-accesorii-diametru-perie-38mm-setare-temperatura-de-ingrijire-si-aer-rece-accesoriu-d/pd/D98MVLMBM/",
-    "selector": "[data-test=main-price]",
+    "selector": ".main-price",
     "frequency": 5,
     "last_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "history": [
@@ -258,27 +281,6 @@
         "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "timestamp": "2025-12-16T17:59:50.0494346+02:00",
         "text": ""
-      }
-    ]
-  },
-  {
-    "url": "http://127.0.0.1:5500/test.html",
-    "selector": "#price",
-    "frequency": 1,
-    "last_hash": "e448191e9b4dfe1cd1170df27576e38a0e9b0fd659eda73b854476e8c783bc25",
-    "history": [
-      {
-        "hash": "7dfe8eac136dbdab6fb99e9991e01fe999465aaadedecdd868b483438f959dab",
-        "timestamp": "2026-01-12T20:26:09.1498749+02:00",
-        "text": "178 Lei"
-      },
-      {
-        "hash": "e448191e9b4dfe1cd1170df27576e38a0e9b0fd659eda73b854476e8c783bc25",
-        "timestamp": "2026-01-12T20:31:56.1347822+02:00",
-        "text": "1678 Lei",
-        "diff": "1\u001b[32m6\u001b[0m78 Lei",
-        "screenshot_before": "screenshots/before_1768242712052205300.png",
-        "screenshot_after": "screenshots/after_1768242715999768200.png"
       }
     ]
   }
